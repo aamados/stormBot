@@ -1,1 +1,1 @@
-worker: java -cp target/classes/storm.bot.Main
+worker: java -jar stormBot-0.1-jar-with-dependencies.jar
