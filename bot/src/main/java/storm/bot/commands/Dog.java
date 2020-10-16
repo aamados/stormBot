@@ -77,7 +77,7 @@ public class Dog implements Commands
 	@Override
 	public String getHelp() 
 	{
-		return "Sends a random dog image to the chat";
+		return "Sends random dog media to the chat";
 	}
 
 }
