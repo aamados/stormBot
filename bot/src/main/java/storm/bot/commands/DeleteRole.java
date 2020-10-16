@@ -3,6 +3,7 @@ package storm.bot.commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -41,6 +42,11 @@ public class DeleteRole implements Commands
 	{
 		String[] args = e.getMessage().getContentRaw().split(" ");
 		
+		if (!(e.getGuild().getMember(e.getAuthor()).hasPermission(Permission.ADMINISTRATOR)))
+		{
+			util.sendErrorMessage("You don't have permission to use this command.", e);
+		}
+		
 		if (!(e.getChannel().getName().equalsIgnoreCase("roles")))
 		{
 			util.sendErrorMessage("This command must be executed in the #roles channel.", e);
@@ -53,12 +59,12 @@ public class DeleteRole implements Commands
 			return;
 		}
 		
+		List<Role> roleArg = e.getGuild().getRolesByName(args[1], true);
+		Role role = (roleArg.size() > 0) ? roleArg.get(0) : null;
 
 		// If the sender doesn't tell us a user, assume its to self.
 		if (args.length == 2)
 		{
-			List<Role> roleArg = e.getGuild().getRolesByName(args[1], true);
-			Role role = (roleArg.size() > 0) ? roleArg.get(0) : null;
 			
 			if (role == null)
 			{
@@ -87,8 +93,6 @@ public class DeleteRole implements Commands
 		// If the sender tells us a person to add a role to
 		if (args.length == 3)
 		{
-			List<Role> roleArg = e.getGuild().getRolesByName(args[1], true);
-			Role role = (roleArg.size() > 0) ? roleArg.get(0) : null;
 			
 			List<Member> mentioned = e.getMessage().getMentionedMembers();
 			Member user = (mentioned.size() > 0) ? mentioned.get(0) : null;

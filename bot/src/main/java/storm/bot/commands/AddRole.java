@@ -3,6 +3,7 @@ package storm.bot.commands;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -40,6 +41,11 @@ public class AddRole implements Commands
 	public void executeCommand(GuildMessageReceivedEvent e) 
 	{
 		String[] args = e.getMessage().getContentRaw().split(" ");
+		
+		if (!(e.getGuild().getMember(e.getAuthor()).hasPermission(Permission.ADMINISTRATOR)))
+		{
+			util.sendErrorMessage("You don't have permission to use this command.", e);
+		}
 		
 		if (!(e.getChannel().getName().equalsIgnoreCase("roles")))
 		{
