@@ -24,6 +24,7 @@ public class Main {
 				
 		try
 		{
+			
 			String token = System.getenv("TOKEN");
 			bot = JDABuilder.createDefault(token).build();		
 		}
