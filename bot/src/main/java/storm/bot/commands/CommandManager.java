@@ -20,6 +20,7 @@ public class CommandManager extends ListenerAdapter
 		Main.cmds.put(new AddRole().getCommandLabel().toLowerCase(), new AddRole());		
 		Main.cmds.put(new Dog().getCommandLabel().toLowerCase(), new Dog());
 		Main.cmds.put(new Help().getCommandLabel().toLowerCase(), new Help());
+		Main.cmds.put(new Cat().getCommandLabel().toLowerCase(), new Cat());
 		
 		// Argument check exempt.
 		exempt.add(new DeleteRole().getCommandLabel().toLowerCase());
