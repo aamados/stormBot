@@ -1,1 +1,1 @@
-worker: java -jar target/stormBot-0.1jar
+worker: java -jar target/stormBot-0.1.jar
