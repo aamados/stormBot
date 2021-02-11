@@ -15,7 +15,7 @@ import storm.bot.utils.EmbedUtils;
 public class Starboard extends ListenerAdapter
 {
 	EmbedUtils embedUtils = new EmbedUtils();
-	final int starsNeeded = 8;
+	final int starsNeeded = 6;
 	
 	@Override
 	public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent e)
