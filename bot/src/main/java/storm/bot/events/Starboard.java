@@ -35,6 +35,10 @@ public class Starboard extends ListenerAdapter
 		if (e.getReactionEmote().getName().equalsIgnoreCase("⭐") && (reacts.getCount() == starsNeeded))
 		{	
 			
+			// Not trying to starboard the starboard you know?
+			if (e.getChannel().getName().equalsIgnoreCase("starboard"))
+				return;
+			
 			contents.setAuthor(msg.getAuthor().getName(), null, msg.getAuthor().getAvatarUrl());
 			
 			contents.setDescription(msg.getContentDisplay());
